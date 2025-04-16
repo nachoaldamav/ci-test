@@ -11,7 +11,7 @@ jobs:
         with:
             node-version: "22.x"
       - name: Install Bit
-        run: SHELL=sh npx @teambit/bvm install
+        run: SHELL=bash npx @teambit/bvm install
       - name: Install dependencies
         run: bit install
       - name: Verify Workspace
