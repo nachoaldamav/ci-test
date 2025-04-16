@@ -9,5 +9,19 @@
  */
 
 {
+    "sample-component": {
+        "name": "sample-component",
+        "scope": "",
+        "version": "",
+        "defaultScope": "ignacioaldama.ci-test",
+        "mainFile": "index.ts",
+        "rootDir": "ci-test/sample-component",
+        "config": {
+            "bitdev.react/react-env@4.0.22": {},
+            "teambit.envs/envs": {
+                "env": "bitdev.react/react-env"
+            }
+        }
+    },
     "$schema-version": "17.0.0"
 }
