@@ -9,6 +9,34 @@
  */
 
 {
+    "envs/my-react-env": {
+        "name": "envs/my-react-env",
+        "scope": "",
+        "version": "",
+        "defaultScope": "ignacioaldama.ci-test",
+        "mainFile": "index.ts",
+        "rootDir": "ci-test/envs/my-react-env",
+        "config": {
+            "bitdev.general/envs/bit-env@3.0.3": {},
+            "teambit.envs/envs": {
+                "env": "bitdev.general/envs/bit-env"
+            }
+        }
+    },
+    "sample-app": {
+        "name": "sample-app",
+        "scope": "",
+        "version": "",
+        "defaultScope": "ignacioaldama.ci-test",
+        "mainFile": "index.ts",
+        "rootDir": "ci-test/sample-app",
+        "config": {
+            "ignacioaldama.ci-test/envs/my-react-env": {},
+            "teambit.envs/envs": {
+                "env": "ignacioaldama.ci-test/envs/my-react-env"
+            }
+        }
+    },
     "sample-component": {
         "name": "sample-component",
         "scope": "",
@@ -17,9 +45,9 @@
         "mainFile": "index.ts",
         "rootDir": "ci-test/sample-component",
         "config": {
-            "bitdev.react/react-env@4.0.22": {},
+            "ignacioaldama.ci-test/envs/my-react-env": {},
             "teambit.envs/envs": {
-                "env": "bitdev.react/react-env"
+                "env": "ignacioaldama.ci-test/envs/my-react-env"
             }
         }
     },
