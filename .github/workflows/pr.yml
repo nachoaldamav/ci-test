@@ -24,6 +24,9 @@ jobs:
         run: |
           echo "Branch Name: ${{ env.branch_name }}"
           echo "Commit Message: ${{ env.commit_message }}"
+      
+      - name: Install dependencies
+        run: bit install
 
       - name: Verify Workspace
         run: bit ci verify
