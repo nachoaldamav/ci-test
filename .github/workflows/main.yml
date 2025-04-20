@@ -3,19 +3,11 @@ on: push
 jobs:
   my-job:
     runs-on: ubuntu-latest
+    container:
+      image: bitsrc/stable:1.9.124
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Prepare envirnoment
-        uses: actions/setup-node@v4
-        with:
-            node-version: "22.x"
-            cache: "npm"
-            cache-dependency-path: '**/.github/workflows/*.yml'
-      - name: Install Bit
-        run: |
-            SHELL=bash npx @teambit/bvm install
-            echo "/home/runner/bin" >> $GITHUB_PATH
       - name: Install dependencies
         run: bit install
       - name: Verify Workspace
