@@ -1,4 +1,4 @@
-name: hello-world
+name: pr
 on:
   pull_request:
     types: [opened, synchronize, reopened]
