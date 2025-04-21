@@ -65,5 +65,5 @@
   "teambit.workspace/workspace-config-files": {
     "enableWorkspaceConfigWrite": true
   },
-  "teambit.git/ci@cff8cc24f980326462059e3f59ea3e76ca747609": {}
+  "teambit.git/ci@d2e2259d714882f1c17ae47731dde9c26ce119ed": {}
 }
