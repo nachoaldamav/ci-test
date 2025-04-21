@@ -28,9 +28,9 @@ jobs:
       - name: Verify Workspace
         run: bit ci verify
         env:
-          BIT_CONFIG_ACCESS_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}
+          BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}
     
       - name: Run PR command
         run: bit ci pr -m "${{ env.commit_message }}" -l "ignacioaldama.ci-test/${{ env.branch_name }}" -b
         env:
-          BIT_CONFIG_ACCESS_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}
+          BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}
