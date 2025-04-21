@@ -30,8 +30,8 @@ importers:
         specifier: 1.6.22
         version: 1.6.22(react@19.0.0)
       '@teambit/git.ci':
-        specifier: 0.0.0-5d290c5eafc0c3191d293a120a217a12d077d01b
-        version: 0.0.0-5d290c5eafc0c3191d293a120a217a12d077d01b(graphql@16.10.0)
+        specifier: 0.0.0-313e9b14eaed82ef3b0dec5ba01c198d5139c8e4
+        version: 0.0.0-313e9b14eaed82ef3b0dec5ba01c198d5139c8e4(graphql@16.10.0)
       '@teambit/mdx.ui.mdx-scope-context':
         specifier: 1.0.7
         version: 1.0.7(@types/react@19.0.2)(react@19.0.0)
@@ -3084,8 +3084,8 @@ packages:
       react: ^16.8.0 || ^17.0.0
       react-dom: ^16.8.0 || ^17.0.0
 
-  '@teambit/git.ci@0.0.0-5d290c5eafc0c3191d293a120a217a12d077d01b':
-    resolution: {integrity: sha512-itcx3ZixpGvQyuPhYLG3er+9UMUQyMjG69+YkpIyv7ist8O/bUKG1cLyKeCgB2K6P/1XJx6dbHv3QGRypqEUdA==}
+  '@teambit/git.ci@0.0.0-313e9b14eaed82ef3b0dec5ba01c198d5139c8e4':
+    resolution: {integrity: sha512-Mr1wNaoHCi0o6SP57ZJgYzPWrLPnsR3fngjgnT106z6Lick+IUJvdmCooo4lQjRrhJCIfJk86lAeNHx4GIrWjw==}
     engines: {node: '>=16.0.0'}
 
   '@teambit/git.modules.git-ignore@1.0.2':
@@ -14495,7 +14495,7 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
-  '@teambit/git.ci@0.0.0-5d290c5eafc0c3191d293a120a217a12d077d01b(graphql@16.10.0)':
+  '@teambit/git.ci@0.0.0-313e9b14eaed82ef3b0dec5ba01c198d5139c8e4(graphql@16.10.0)':
     dependencies:
       '@bitdev/harmony.harmony': 1.0.19
       '@teambit/component-id': 1.2.4
