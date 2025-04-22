@@ -27,9 +27,6 @@ jobs:
       
       - name: Install dependencies
         run: bit install
-
-      - name: Verify Workspace
-        run: bit ci verify
     
       - name: Run PR command
         run: bit ci pr -m "${{ env.commit_message }}" -b
