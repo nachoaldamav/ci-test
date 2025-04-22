@@ -32,4 +32,4 @@ jobs:
         run: bit ci verify
     
       - name: Run PR command
-        run: bit ci pr -m "${{ env.commit_message }}" -l "ignacioaldama.ci-test/${{ env.branch_name }}" -b
+        run: bit ci pr -m "${{ env.commit_message }}" -b
