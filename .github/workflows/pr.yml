@@ -24,9 +24,8 @@ jobs:
         run: |
           echo "Branch Name: ${{ env.branch_name }}"
           echo "Commit Message: ${{ env.commit_message }}"
-      
-      - name: Install dependencies
-        run: bit install
-    
+          
       - name: Run PR command
         run: bit ci pr -m "${{ env.commit_message }}" -b
+        env:
+          BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}
