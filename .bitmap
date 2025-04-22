@@ -11,9 +11,8 @@
 {
     "envs/my-react-env": {
         "name": "envs/my-react-env",
-        "scope": "",
-        "version": "",
-        "defaultScope": "ignacioaldama.ci-test",
+        "scope": "ignacioaldama.ci-test",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "ci-test/envs/my-react-env",
         "config": {
@@ -25,9 +24,8 @@
     },
     "sample-app": {
         "name": "sample-app",
-        "scope": "",
-        "version": "",
-        "defaultScope": "ignacioaldama.ci-test",
+        "scope": "ignacioaldama.ci-test",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "ci-test/sample-app",
         "config": {
@@ -39,9 +37,8 @@
     },
     "sample-component": {
         "name": "sample-component",
-        "scope": "",
-        "version": "",
-        "defaultScope": "ignacioaldama.ci-test",
+        "scope": "ignacioaldama.ci-test",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "ci-test/sample-component",
         "config": {
