@@ -1,4 +1,4 @@
-name: pr
+name: Pull Request
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -12,25 +12,12 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Get Branch Name
-        id: get_branch
-        run: echo "branch_name=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}})" >> $GITHUB_ENV
-
-      - name: Get Commit Message
-        id: get_commit_message
-        run: echo "commit_message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
-
-      - name: Display Branch Name and Commit Message
-        run: |
-          echo "Branch Name: ${{ env.branch_name }}"
-          echo "Commit Message: ${{ env.commit_message }}"
-          
       - name: Install dependencies
         run: bit install
         env:
           BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}  
           
       - name: Run PR command
-        run: bit ci pr -m "${{ env.commit_message }}" -b
+        run: bit ci pr -b
         env:
           BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}
