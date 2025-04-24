@@ -1,36 +1,73 @@
-name: pr
+name: Pull Request
+
 on:
   pull_request:
     types: [opened, synchronize, reopened]
 
 jobs:
-  my-job:
+  deps:
     runs-on: ubuntu-latest
     container:
       image: bitsrc/stable:1.9.124
+
+    outputs:
+      cache-key: ${{ steps.cache-deps.outputs.cache-primary-key }}
+
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Get Branch Name
-        id: get_branch
-        run: echo "branch_name=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}})" >> $GITHUB_ENV
+      # Re-use an existing pnpm/Bit cache if it exists
+      - name: Restore Bit + pnpm cache
+        id: cache-deps
+        uses: actions/cache@v4
+        with:
+          path: |
+            /root/.bit
+            /root/.pnpm-store            # default store in Bit’s Docker image
+            /root/.local/share/pnpm/store # alt. store location used by newer pnpm
+            **/node_modules
+          key: ${{ runner.os }}-bit-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-      - name: Get Commit Message
-        id: get_commit_message
-        run: echo "commit_message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
-
-      - name: Display Branch Name and Commit Message
-        run: |
-          echo "Branch Name: ${{ env.branch_name }}"
-          echo "Commit Message: ${{ env.commit_message }}"
-          
       - name: Install dependencies
         run: bit install
         env:
-          BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}  
-          
+          BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}
+
+      # Save or update the cache only when we had a miss
+      - name: Save cache
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            /root/.bit
+            /root/.pnpm-store
+            /root/.local/share/pnpm/store
+            **/node_modules
+          key: ${{ steps.cache-deps.outputs.cache-primary-key }}
+
+  pr:
+    needs: deps
+    runs-on: ubuntu-latest
+    container:
+      image: bitsrc/stable:1.9.124
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pull the cache created in the deps job
+      - name: Restore Bit + pnpm cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            /root/.bit
+            /root/.pnpm-store
+            /root/.local/share/pnpm/store
+            **/node_modules
+          key: ${{ needs.deps.outputs.cache-key }}
+          restore-keys: |
+            ${{ runner.os }}-bit-pnpm-
+
       - name: Run PR command
-        run: bit ci pr -m "${{ env.commit_message }}" -b
+        run: bit ci pr -b
         env:
           BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}
