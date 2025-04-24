@@ -1,4 +1,4 @@
-name: hello-world
+name: pr
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -24,13 +24,13 @@ jobs:
         run: |
           echo "Branch Name: ${{ env.branch_name }}"
           echo "Commit Message: ${{ env.commit_message }}"
-
-      - name: Verify Workspace
-        run: bit ci verify
+          
+      - name: Install dependencies
+        run: bit install
         env:
-          BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}
-    
+          BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}  
+          
       - name: Run PR command
-        run: bit ci pr -m "${{ env.commit_message }}" -l "ignacioaldama.ci-test/${{ env.branch_name }}" -b
+        run: bit ci pr -m "${{ env.commit_message }}" -b
         env:
           BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}
