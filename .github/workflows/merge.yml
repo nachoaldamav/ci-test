@@ -10,7 +10,7 @@ jobs:
     if: github.event.pull_request.merged == true   # skip “closed without merge”
     runs-on: ubuntu-latest
     container:
-      image: bitsrc/stable:1.9.124
+      image: bitsrc/stable:1.9.124-alpine
 
     steps:
       - name: Checkout Code
