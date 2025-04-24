@@ -1,0 +1,40 @@
+name: pr
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  my-job:
+    if: github.event.pull_request.merged == true   # skip “closed without merge”
+    runs-on: ubuntu-latest
+    container:
+      image: bitsrc/stable:1.9.124
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Get Branch Name
+        id: get_branch
+        run: echo "branch_name=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}})" >> $GITHUB_ENV
+
+      - name: Get Commit Message
+        id: get_commit_message
+        run: echo "commit_message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+
+      - name: Display Branch Name and Commit Message
+        run: |
+          echo "Branch Name: ${{ env.branch_name }}"
+          echo "Commit Message: ${{ env.commit_message }}"
+
+      - name: Install dependencies
+        run: bit install
+        env:
+          BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}
+      
+      - name: Merge lane
+        run: bit ci merge -m "${{ env.commit_message }}" -b
+        env:
+          BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}
