@@ -1,72 +1,22 @@
 name: Pull Request
-
 on:
   pull_request:
     types: [opened, synchronize, reopened]
 
 jobs:
-  deps:
+  my-job:
     runs-on: ubuntu-latest
     container:
       image: bitsrc/stable:1.9.124
-
-    outputs:
-      cache-key: ${{ steps.cache-deps.outputs.cache-primary-key }}
-
     steps:
-      - uses: actions/checkout@v4
-
-      # Re-use an existing pnpm/Bit cache if it exists
-      - name: Restore Bit + pnpm cache
-        id: cache-deps
-        uses: actions/cache@v4
-        with:
-          path: |
-            /root/.bit
-            /root/.pnpm-store            # default store in Bit’s Docker image
-            /root/.local/share/pnpm/store # alt. store location used by newer pnpm
-            **/node_modules
-          key: ${{ runner.os }}-bit-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         run: bit install
         env:
-          BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}
-
-      # Save or update the cache only when we had a miss
-      - name: Save cache
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            /root/.bit
-            /root/.pnpm-store
-            /root/.local/share/pnpm/store
-            **/node_modules
-          key: ${{ steps.cache-deps.outputs.cache-primary-key }}
-
-  pr:
-    needs: deps
-    runs-on: ubuntu-latest
-    container:
-      image: bitsrc/stable:1.9.124
-
-    steps:
-      - uses: actions/checkout@v4
-
-      # Pull the cache created in the deps job
-      - name: Restore Bit + pnpm cache
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            /root/.bit
-            /root/.pnpm-store
-            /root/.local/share/pnpm/store
-            **/node_modules
-          key: ${{ needs.deps.outputs.cache-key }}
-          restore-keys: |
-            ${{ runner.os }}-bit-pnpm-
-
+          BIT_CONFIG_USER_TOKEN: ${{ secrets.BIT_ACCESS_TOKEN }}  
+          
       - name: Run PR command
         run: bit ci pr -b
         env:
