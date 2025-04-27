@@ -30,8 +30,8 @@ importers:
         specifier: 1.6.22
         version: 1.6.22(react@19.0.0)
       '@teambit/git.ci':
-        specifier: 0.0.0-176544390e12ccded5cb41cf07560f62dc552c25
-        version: 0.0.0-176544390e12ccded5cb41cf07560f62dc552c25(graphql@16.10.0)
+        specifier: 0.0.0-2ab00a8c2c136df51831cdb76d3ef0417037a1ef
+        version: 0.0.0-2ab00a8c2c136df51831cdb76d3ef0417037a1ef(graphql@16.10.0)
       '@teambit/mdx.ui.mdx-scope-context':
         specifier: 1.0.7
         version: 1.0.7(@types/react@19.0.2)(react@19.0.0)
@@ -3090,8 +3090,8 @@ packages:
       react: ^16.8.0 || ^17.0.0
       react-dom: ^16.8.0 || ^17.0.0
 
-  '@teambit/git.ci@0.0.0-176544390e12ccded5cb41cf07560f62dc552c25':
-    resolution: {integrity: sha512-wbr5dol5wZlK7+QL6bVWrf44COfL5pCIEptlkinqJdvvROQVAmA+JCW0bUUBc1QWkf/ISAyCk5oqsfvA7kPpBg==}
+  '@teambit/git.ci@0.0.0-2ab00a8c2c136df51831cdb76d3ef0417037a1ef':
+    resolution: {integrity: sha512-cg32xMW/ZF0a45GY5BJ+auyrf2NbNpNtioOsJamRzt92NAanngO78Wq72UOqqAUnyaU5jmFq3e12/MVH9rLZfg==}
     engines: {node: '>=16.0.0'}
 
   '@teambit/git.modules.git-ignore@1.0.2':
@@ -13366,7 +13366,7 @@ snapshots:
     transitivePeerDependencies:
       - react-dom
 
-  '@teambit/component.snap-distance@0.0.50':
+  '@teambit/component.snap-distance@0.0.50(graphql@16.10.0)':
     dependencies:
       '@teambit/graph.cleargraph': 0.0.11
       '@teambit/legacy.scope': 0.0.49(graphql@16.10.0)
@@ -13374,7 +13374,10 @@ snapshots:
       memoizee: 0.4.15
       p-map-series: 2.1.0
     transitivePeerDependencies:
+      - domexception
       - encoding
+      - graphql
+      - supports-color
 
   '@teambit/component.sources@0.0.101(graphql@16.10.0)':
     dependencies:
@@ -14509,7 +14512,7 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
-  '@teambit/git.ci@0.0.0-176544390e12ccded5cb41cf07560f62dc552c25(graphql@16.10.0)':
+  '@teambit/git.ci@0.0.0-2ab00a8c2c136df51831cdb76d3ef0417037a1ef(graphql@16.10.0)':
     dependencies:
       '@bitdev/harmony.harmony': 1.0.19
       '@teambit/component-id': 1.2.4
@@ -14788,7 +14791,7 @@ snapshots:
   '@teambit/legacy.dependency-graph@0.0.52(graphql@16.10.0)':
     dependencies:
       '@teambit/component-id': 1.2.4
-      '@teambit/component.snap-distance': 0.0.50
+      '@teambit/component.snap-distance': 0.0.50(graphql@16.10.0)
       '@teambit/graph.cleargraph': 0.0.11
       '@teambit/legacy.component-list': 0.0.103(graphql@16.10.0)
       '@teambit/legacy.constants': 0.0.11
@@ -14870,7 +14873,7 @@ snapshots:
       '@teambit/bit.get-bit-version': 0.0.5
       '@teambit/component-id': 1.2.4
       '@teambit/component-version': 1.0.4
-      '@teambit/component.snap-distance': 0.0.50
+      '@teambit/component.snap-distance': 0.0.50(graphql@16.10.0)
       '@teambit/component.sources': 0.0.101(graphql@16.10.0)
       '@teambit/harmony.modules.concurrency': 0.0.12
       '@teambit/harmony.modules.feature-toggle': 0.0.19
@@ -16043,7 +16046,7 @@ snapshots:
   '@teambit/scope.remote-actions@0.0.49(graphql@16.10.0)':
     dependencies:
       '@teambit/component-id': 1.2.4
-      '@teambit/component.snap-distance': 0.0.50
+      '@teambit/component.snap-distance': 0.0.50(graphql@16.10.0)
       '@teambit/legacy.constants': 0.0.11
       '@teambit/legacy.logger': 0.0.19
       '@teambit/legacy.scope': 0.0.49(graphql@16.10.0)
