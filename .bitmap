@@ -12,21 +12,21 @@
     "envs/my-react-env": {
         "name": "envs/my-react-env",
         "scope": "ignacioaldama.ci-test",
-        "version": "0.0.2",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "ci-test/envs/my-react-env"
     },
     "sample-app": {
         "name": "sample-app",
         "scope": "ignacioaldama.ci-test",
-        "version": "0.0.2",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "ci-test/sample-app"
     },
     "sample-component": {
         "name": "sample-component",
         "scope": "ignacioaldama.ci-test",
-        "version": "0.0.2",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "ci-test/sample-component"
     },
