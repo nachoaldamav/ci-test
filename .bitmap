@@ -30,5 +30,12 @@
         "mainFile": "index.ts",
         "rootDir": "ci-test/sample-component"
     },
-    "$schema-version": "17.0.0"
+    "$schema-version": "17.0.0",
+    "_bit_lane": {
+        "id": {
+            "name": "pr-demo-8",
+            "scope": "ignacioaldama.ci-test"
+        },
+        "exported": false
+    }
 }
